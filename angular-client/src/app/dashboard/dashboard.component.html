@@ -1,0 +1,15 @@
+<main class="app__main-inner">
+    <div class="app__row app__row--left">
+      <section class="app__col app__col--map">
+        <h1 class="app__mobile-header">Coronavirus <strong>COVID-19</strong> Global Cases</h1>
+
+        <app-map-cases (selectedCountry) = "getSelectedCountry($event)" #map></app-map-cases>
+      </section>
+    </div>
+
+    <div class="app__col app__col--stats">
+        <div class="app__row app__list-stack">
+        </div>
+        <app-timeline-chart [showChartLoader] = "showChartLoader" class="app-timeline-chart" #charts></app-timeline-chart>
+    </div>
+</main>

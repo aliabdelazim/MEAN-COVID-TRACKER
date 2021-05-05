@@ -1,0 +1,32 @@
+<div class="alert alert-primary" role="alert">
+  Select Countries From The Map To Search For It's Corresponding Info.
+</div>
+<div class="app__map-inner">
+    <div class="btn-group" role="group" >
+      <button  *ngFor="let button of dataSetButtons"  type="button" class="btn btn-secondary" (click)="onDataSetSelected($event)">
+        <span >
+          {{ button.name }}
+        </span>
+      </button>
+    </div>
+    <igx-geographic-map  
+        
+        width="700px"
+        height="300px"
+        class="app__map" #map zoomable="true" (seriesMouseLeftButtonUp)="onSeriesClicked($event)">
+    </igx-geographic-map>
+  </div>
+  
+  <ng-template let-series="series" let-item="item" #template>
+      <div class="app__map-tooltip">
+          <h1 >{{item.country}}</h1>
+          <ul class="app__map-tooltip-list">
+            <li class="infected">Infected: <span>{{ getTotalInfectedForCountry(item) | number }}</span></li>
+            <li class="recovered">Recovered: <span>{{ getTotalTestedForCountry(item) | number }}</span></li>
+            <li class="deaths">Deaths: <span>{{ getTotalDeathsForCountry(item) | number }}</span></li>
+          </ul>
+      </div>
+  </ng-template>
+  
+
+  
